@@ -5,7 +5,7 @@ function Header() {
     <nav className="navbar navbar-lg  heading">
      
       <a className="navbar-brand heading-link  mx-4" href="/">
-        Keeper
+        iKeep
       </a>
     </nav>
   );
