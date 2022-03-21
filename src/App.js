@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Note from "./components/Note";
@@ -7,11 +7,27 @@ import CreateNote from "./components/CreateNote";
 
 function App() {
 
-  const [noteContent, setNoteContent] = useState([]);
+  const [noteContent, setNoteContent] = useState(JSON.parse(localStorage.getItem('noteContent')));
 
   const [noteTitle, setNoteTitle] = useState("");
 
   const [noteDescription, setNoteDescription] = useState("");
+  useEffect(() => {
+    console.log(noteContent);
+    const json = JSON.stringify(noteContent);
+    localStorage.setItem("noteContent", json);
+  }, [noteContent]);
+
+
+
+  useEffect(() => {
+    const json = localStorage.getItem("noteContent");
+    const savedNotes = JSON.parse(json);
+    
+    if (savedNotes) {
+      setNoteContent(savedNotes);console.log(savedNotes);
+    }
+  },[]);
 
   let titleChangeHandler = (event) => setNoteTitle(event.target.value);
 
