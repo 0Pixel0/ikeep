@@ -9,7 +9,7 @@
     "rewrites": [
       {
         "source": "**",
-        "destination": "/Users/ashutosh/Documents/ikeep/public/index.html"
+        "destination": "public/index.html"
       }
     ]
   }
