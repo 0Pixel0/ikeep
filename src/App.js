@@ -35,7 +35,11 @@ function App() {
 
   let addHandler = (event) => {
     setNoteContent(previous => {
-      return [...previous, { title: noteTitle, content: noteDescription }];
+
+      if(previous){return  [...previous, { title: noteTitle, content: noteDescription }]}
+      else{
+          return [ { title: noteTitle, content: noteDescription }];
+      }
     });
     setNoteTitle("");
     setNoteDescription("");
@@ -60,7 +64,7 @@ function App() {
         changeTextHandler={descriptionChangeHandler}
         addNoteHandler={addHandler}
       />
-      {noteContent.map((note, index) => {
+      {noteContent && noteContent.map((note, index) => {
         return (
           <Note
             id={index}
